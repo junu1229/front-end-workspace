@@ -1,0 +1,64 @@
+header {
+    position: fixed;
+    width: 31.25rem;
+    height: 100%;
+    background-image: url(../../resources/background.jpg);
+    background-size: cover;
+    background-position: center;
+    border-right: 1px solid #ddd;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.header-blackbox {
+    position: absolute;
+    background-color: black;
+    width: 500px;
+    height: 100%;
+    opacity: 30%;
+}
+.header-content {
+    position: absolute;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    margin-bottom: 14.4rem;
+    font-size: 3.75rem;
+    text-decoration: underline;
+    text-decoration-thickness: 0.125rem;
+    text-underline-offset: 1rem;
+    font-weight: 400;
+}
+.menus {
+    margin-bottom: 5rem;
+    font-size: 2rem;
+    font-weight: 350;
+}
+.menu {
+    padding: 0.5rem;
+}
+main {
+    padding-left: 500px;
+    display: flex;
+    flex-direction: column;
+}
+.main__h2 {
+    font-size: 2rem;
+    margin: 1rem;
+    font-weight: bold;
+}
+main img {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+main p {
+    padding: 1rem;
+    line-height: 1.4rem;
+    font-weight: 380;
+}
+
