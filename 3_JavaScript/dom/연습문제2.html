@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>올해 남은 시간</title>
+</head>
+<body>
+    <h1>올해 남은 시간</h1>
+    <h2 class="clock"></h2>
+
+    <script>
+        const h2 = document.querySelector(".clock");
+        setInterval(() => {
+            const today = new Date;
+            const nextYear = new Date('2024-01-01 00:00:00');
+            const time = nextYear.getTime() - today.getTime();
+            const day = Math.floor(time/(1000*60*60*24));
+            const hour = Math.floor(time/(1000*60*60)%24);
+            const min = Math.floor(time/(1000*60)%60);
+            const second = Math.floor(time/1000%60);
+            // const hour = Math.floor(time / (60 * 60 * 1000));
+            // const min = Math.floor((time % (60 * 60 * 1000))/(60*1000));
+            // const second = Math.floor((time % (60 * 60 * 1000))%(60*1000)/(1000));
+            h2.innerHTML = `${day}일 ${hour}시간 ${min}분 ${second}초`;
+
+        }, 1000);
+        // h1.innerText = 
+    </script>
+</body>
+</html>
