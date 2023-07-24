@@ -1,0 +1,100 @@
+/* .nav {
+} */
+.progress-bar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100vw;
+    height: 5px;
+    background-color: #ddd;
+}
+.progress-bar {
+    width: 30%;
+    height: 100%;
+    background-color: rebeccapurple;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    padding: 1rem;
+    background: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+.logo {
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 30px;
+}
+.heading {
+    margin-right: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.headingp {
+    margin-left: 100px;
+    font-weight: 300;
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+}
+.headingp:hover {
+    color: tomato;
+}
+main {
+    padding-top: 108px;
+}
+.main1 {
+    background-color: red;
+    height: 1000px;
+}
+.main2 {
+    background-color: purple;
+    height: 1000px;
+}
+.main3 {
+    background-color: yellow;
+    height: 1000px;
+}
+.maindesc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.maindesc__h {
+    font-size: 2.5rem;
+    padding-bottom: 30px;
+}
+main div div p {
+    line-height: 1.4rem;
+}
+
+#top {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    
+    
+}
+#top a {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
