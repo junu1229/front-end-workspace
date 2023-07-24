@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 따라가는</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 호버 -> 무빙따라가게 -> if 걸어서 마우스가 들어가면 멈추게 -> 호버해제시 애니메이션까지 -->
+    <div class="circle"></div>
+    <div class="container">
+        <div id="innerC">
+        </div>
+    </div>
+    <script>
+        const circle = document.querySelector(".circle");
+        const container = document.querySelector(".container");
+        const innerC = document.querySelector("#innerC")
+        let mouse;
+        let cursor = document.getElementById("cursor");
+        container.addEventListener("mousemove", myFunction);
+        function myFunction(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        innerC.style.left = (mouseX - 55) + "px";
+        innerC.style.top = (mouseY - 55) + "px";
+        }
+    </script>
+</body>
+</html>

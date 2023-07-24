@@ -1,0 +1,32 @@
+.container {
+    position: absolute;
+    width: 300px;
+    background-color: antiquewhite;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#innerC {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    backface-visibility: hidden;
+    z-index: 9999999;
+    pointer-events: none; /* pointer-events: none is needed */
+    cursor: none;
+}
+.circle { 
+    position: relative;
+
+    width: 150px;
+
+    height: 150px; 
+
+    border-radius: 50%; 
+
+    background-color: #9bf50b; 
+
+    transform: translate(-50%, -50%); 
+
+}

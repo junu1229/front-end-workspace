@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="video-container">
+        <button id="play-button" type="button"><span class="play-icon"><i class="fa fa-solid fa-play"></i></span></button>
+    </div>
+    <script>
+        const videoContainer = document.getElementById("video-container");
+        const playButton = document.getElementById("play-button");
+        videoContainer.addEventListener("mousemove", function (e) {
+            const containerRect = videoContainer.getBoundingClientRect();
+            const mouseX = e.clientX - containerRect.left;
+            console.log(mouseX);
+            const mouseY = e.clientY - containerRect.top;
+
+            const buttonWidth = playButton.offsetWidth;
+            const buttonHeight = playButton.offsetHeight;
+            console.log(buttonWidth);
+            console.log(buttonHeight);
+            const buttonX = mouseX - buttonWidth / 2;
+            const buttonY = mouseY - buttonHeight / 2;
+
+            const maxButtonX = containerRect.width - buttonWidth;
+            const maxButtonY = containerRect.height - buttonHeight;
+            playButton.style.left = Math.min(Math.max(buttonX, 0), maxButtonX) + "px";
+            playButton.style.top = Math.min(Math.max(buttonY, 0), maxButtonY) + "px";
+            playButton.style.transition = "all 0.3s";
+        });
+
+        videoContainer.addEventListener("mouseleave", function () {
+            setTimeout(function () {
+                playButton.style.left = "50%";
+                playButton.style.top = "50%";
+                playButton.style.transform = "translate(-50%, -50%)";
+            }, 50);
+        });
+
+        videoContainer.addEventListener("mouseover", function () {
+            playButton.style.transform = "scale(1.2)";
+        });
+    </script>
+</body>
+</html>
