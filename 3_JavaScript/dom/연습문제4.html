@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식을 활용한 회원가입 폼</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        div {
+            display: flex;
+            align-items: center;
+        }
+        input {
+            margin-left: 10px;
+            width: 200px;
+            height: 25px;
+        }
+        p {
+            opacity: 60%;
+        }
+        select {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" onsubmit="return validate()">
+        <div>
+            <h3>* 아이디 : </h3>
+            <input type="text" id="userid" name="userid">
+        </div>
+        <div>
+            <p>첫 글자는 반드시 영문자로, 그리고 영문자, 숫자 포함하여 총 4-12로 입력하시오.</p>
+        </div>
+        <div>
+            <h3>* 비밀번호 : </h3>
+            <input type="password" id="userPwd1" name="userPwd1">
+        </div>
+        <div>
+            <p>영문자, 숫자, 특수문자 포함하여 총 8~15자로 입력하시오.</p>
+        </div>
+        <div>
+            <h3>* 비밀번호 확인 : </h3>
+            <input type="password" id="userPwd2" name="userPwd2">
+        </div>
+        <div>
+            <p>위의 비밀번호와 일치하게 입력하시오.</p>
+        </div>
+        <div>
+            <h3>* 이름 : </h3>
+            <input type="text" id="userName" name="userName">
+        </div>
+        <div>
+            <p>한글로만 이루어져야되며 2글자 이상으로 입력하시오.</p>
+        </div>
+        <div>
+            <h3>* 이메일 : </h3>
+            <input type="text" id="email" name="email">
+        </div>
+        <div>
+            <p>이메일 형식에 맞춰서 입력하시오.</p>
+        </div>
+        <div>
+            <h3>* 취미 : </h3>
+            <input type="text" id="hobby" name="hobby" placeholder="축구, 농구, 야구, 독서 등">
+        </div>
+        <div>
+            <h3>* 거주지 : </h3>
+            <select name="address" id="address">
+                <option value="서울">서울</option>
+                <option value="인천">인천</option>
+                <option value="부산">부산</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit" id="check">회원가입</button>
+            <button style="margin-left: 10px;">취소</button>
+        </div>
+    </form>
+    <script>
+        const check = document.querySelector('#check');
+        const userid = document.querySelector('#userid');
+        const userPwd1 = document.querySelector('#userPwd1');
+        const userPwd2 = document.querySelector('#userPwd2');
+        const userName = document.querySelector('#userName');
+        const email = document.querySelector('#email');
+        const regExp1 = /^[A-Za-z][A-Za-z0-9]{3,11}$/;
+        const regExp2_1 = /^[!-~]{8,15}$/;
+        const regExp2_2 = /([!-/]|[:-@]|[[-`]|{-~)+/;
+        const regExp2_3 = /[A-Z]/;
+        const regExp2_4 = /[a-a]/;
+        const regExp2_5 = /[0-9]/;
+        const regExp3 = /^([ㄱ-ㅎ]|[ㅏ-ㅣ]|[가-힣]){2,}$/;
+
+        function userIdCheck() {
+            return regExp1.test(userid.value);
+        }
+        function userPwd1Check() {
+            return regExp2_1.test(userPwd1.value)&&
+            regExp2_2.test(userPwd1.value)!=null&&
+            regExp2_3.test(userPwd1.value)!=null&&
+            regExp2_4.test(userPwd1.value)!=null&&
+            regExp2_5.test(userPwd1.value)!=null
+        }
+        function userPwd2Check() {
+            return userPwd1.value==userPwd2.value;
+        }
+        function validate() {
+            if(!userIdCheck()) {
+                userid.focus();
+                return false;
+            } else if(!userPwd1Check()) {
+                userPwd1.focus();
+                return false;
+            } else if(!userPwd2Check()) {
+                userPwd2.focus();
+                return false;
+            } 
+        }
+
+        check.addEventListener('click', function(){
+            if(regExp1.test(userid.value)&&
+            regExp2_1.test(userPwd1.value)&&
+            userPwd1.value.match(regExp2_2)!=null&&
+            userPwd1.value.match(regExp2_3)!=null&&
+            userPwd1.value.match(regExp2_4)!=null&&
+            userPwd1.value.match(regExp2_5)!=null&&
+            userPwd1.value==userPwd2.value
+            ) {
+                console.log('정상 입력!');
+            } else {
+                console.log('x');
+            }
+        })
+
+        userid.addEventListener('input', function(event){
+            if(!userIdCheck()) {
+                console.log(event.target.nextElementSibling)
+            }
+        })
+    </script>
+</body>
+</html>
