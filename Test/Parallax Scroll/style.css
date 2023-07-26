@@ -1,0 +1,37 @@
+.para-wrapper {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* 페이지 전체를 감싼 div에 perspective속성을 추가해야 한다. */
+    perspective: 300px;  
+  }
+  .intro,
+  .outro {
+    height: 100vh;
+    background: royalblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .para-group {
+    position: relative;
+    height: 80vh;
+    transform-style: preserve-3d;
+    z-index: -1;
+  }
+  #group-1 .para-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #group-1 .back-layer {
+    color: white;
+    transform: translate3d(0, 0, -300px) scale(2.1);
+    background: url(test.jpeg) no-repeat center / 100%;
+  }
+  /* .back-layer {
+    transform: translate3d(0, 0, -300px) scale(2);
+    background: url(test.jpeg) no-repeat center / cover;
+  }   */

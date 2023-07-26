@@ -1,0 +1,43 @@
+
+<header class="placeholder">Header</header>
+<section class="para-section">
+  <div class="para-content">Parallax Moving</div>
+</section>
+<footer class="placeholder">Footer</footer>
+<style>
+  .placeholder {
+    height: 150vh;
+    background: royalblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .para-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url(test.jpeg);
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+</style>
+<script>
+    const options = { rootMargin: "-100px" };
+
+const paraObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      window.addEventListener("scroll", parallaxScroll);
+      console.log("ON");
+    } else {
+      window.removeEventListener("scroll", parallaxScroll);
+      console.log("OFF");
+    }
+  });
+}, options);
+
+paraObserver.observe(paraSection);
+</script>
