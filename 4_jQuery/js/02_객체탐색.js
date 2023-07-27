@@ -99,6 +99,3 @@ $('.wrap2 h2').prev().css(style5);
 $('.wrap2 h2').prevAll().css('background-color', 'moccasin');
 // h2 요소 이전부터 p 요소 이후까지에 모든 형제 요소에 글자크기 2rem
 $('.wrap2 h2').prevUntil('p').css('font-size', '2rem');
-
-
-
