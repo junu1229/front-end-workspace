@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무한스크롤2</title>
+    <style>
+        :root {
+            --rollx: 0%;
+        }
+        p {
+            transform: translateX(var(--rollx));
+        }
+        #roll {
+            transform: translateX(var(--rollx));
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <p id="roll">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eius aperiam quaerat ipsum ad, ullam quam, assumenda quo enim officia deserunt. Cumque ratione mollitia consequatur debitis unde voluptatibus, rem enim?</p>
+    <script>
+        let root = document.querySelector(':root');
+        let roll = document.querySelector('#roll');
+
+        console.log("roll : "+roll);
+        let variables = getComputedStyle(root);
+        let rollvar = getComputedStyle(roll);
+        console.log("rollvar : "+rollvar);
+        
+        
+        let value = variables.getPropertyValue('--rollx');
+        let rollvalue = rollvar.getPropertyValue('--rollx');
+        console.log("rollvalue : "+rollvalue);
+        
+        let calval = value.substr(0,value.length-1);
+        let rollcalval = rollvalue.substr(0,rollvalue.length-1);
+        console.log("rollcalval : "+rollcalval);
+
+    
+        const timer = ms => new Promise(res => setTimeout(res, ms))
+
+        async function load () { // We need to wrap the loop into an async function for this to work
+            for (var i = 0; i < 999999; i++) {
+                let rollvar = getComputedStyle(roll);
+                let rollvalue = rollvar.getPropertyValue('--rollx');
+                let rollcalval = rollvalue.substr(0,rollvalue.length-1);
+                roll.style.setProperty('--rollx', `${i*0.05}%`);
+                console.log(rollcalval);
+                if(rollcalval>=50) {
+                    i = 1;
+                }
+                await timer(50); // then the created Promise can be awaited
+            }
+        }
+        
+
+
+    </script>
+</body>
+</html>
