@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Total clicks : <span id="num"></span></h1>
+    <button id="plus">click!</button>
+    <script>
+        let a = 0;
+        const plusBtn = document.querySelector('#plus');
+        const number = document.querySelector('#num');
+        plusBtn.addEventListener('click', function() {
+            a++;
+            number.innerHTML = a;
+        });
+    </script>
+</body>
+</html>
