@@ -61,6 +61,7 @@ main{
     padding-top: 56px;
     display: flex;
 }
+
 aside{
     display: none;
     position: fixed;
@@ -115,6 +116,9 @@ aside a p {
 .aside-category, footer {
     display: none;
 }
+
+
+
 .main-content {
     padding-left: 70px;
 }
