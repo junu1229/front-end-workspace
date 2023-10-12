@@ -6,18 +6,21 @@ const Create = ({addBeverage}) => {
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
-    const title = e.target.title.value;
-    const desc = e.target.desc.value;
-    addBeverage(title, desc);
-    console.log(title);
+    const Writer = e.target.Writer.value;
+    const Title = e.target.Title.value;
+    const Date = e.target.Date.value;
+    addBeverage(Writer, Title, Date);
     navigate("/");
   };
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="title">음료명: </label>
-      <input type="text" id="title" name="title" placeholder="음료명 입력"></input><br></br>
-      <label htmlFor="desc">설명: </label>
-      <input type="text" id="desc" name="desc" placeholder="설명 입력"></input><br></br>
+      <h1>Create Books</h1>
+      <label htmlFor="Writer">Writer: </label>
+      <input type="text" id="Writer" name="Writer" placeholder="Writer" required></input><br></br>
+      <label htmlFor="Title">Title: </label>
+      <input type="text" id="Title" name="Title" placeholder="Title" required></input><br></br>
+      <label htmlFor="Date">Date: </label>
+      <input type="date" id="Date" name="Date" required></input><br></br>
       <input type="submit" value="추가"/>
     </form>
   );
@@ -32,42 +35,31 @@ const Home = ({list, deleteBeverage}) => {
     <thead>
       <tr>
         <th style={{width: "10%"}}>id</th>
-        <th style={{width: "40%"}}>음료명</th>
-        <th style={{width: "40%"}}>설명</th>
-        <th style={{width: "10%"}}>삭제</th>
+        <th style={{width: "20%"}}>Writer</th>
+        <th style={{width: "30%"}}>Title</th>
+        <th style={{width: "30%"}}>Release Date</th>
+        <th style={{width: "10%"}}>Action</th>
       </tr>
     </thead>
     <tbody>
       {list.map((item) => (
           <tr key={item.id}>
           <td>{item.id}</td>
-          <td>{item.title}</td>
-          <td>{item.desc}</td>
+          <td>{item.Writer}</td>
+          <td>{item.Title}</td>
+          <td>{item.Date}</td>
           <td><button id={item.id} onClick={onClick}>삭제</button></td>
         </tr>
       ))}
     </tbody>
   </table>);
 };
-const Detail = () => {
-  return <h1>Detail</h1>
-};
 const App = () => {
   const [beverages, setBeverages] = useState ([
-    { id: 1,
-      title: '여수 윤슬 헤이즐넛 콜드브루',
-      desc: '윤슬을 형상화한 헤이즐넛 콜드브루',
-    },
-
-    {
-      id:2,
-      title: '아이스 오렌지 판타지 유스베리 티',
-      desc: '상큼한 오렌지와 유스베리, 얼그레이 티의 조화',
-    },
   ]);
   const [id, setId] = useState(3);
-  const addBeverage = (title, desc) => {
-    const newBeverage = {id, title, desc};
+  const addBeverage = (Writer, Title, Date) => {
+    const newBeverage = {id, Writer, Title, Date};
     setBeverages([...beverages, newBeverage]);
     setId(id +1);
   };
@@ -78,15 +70,13 @@ const App = () => {
   };
   return (
     <BrowserRouter>
-      <h1>Cafe</h1>
+      <h1>Books</h1>
       <ul>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/detail">Detail</NavLink></li>
         <li><NavLink to="/create">추가</NavLink></li>
       </ul>
       <Routes>
         <Route path="/" element={<Home list={beverages} deleteBeverage={deleteBeverage}/>} />
-        <Route path="/detail" element={<Detail />}/>
         <Route path="/create" element={<Create addBeverage={addBeverage}/>}/>
       </Routes>
     </BrowserRouter>
